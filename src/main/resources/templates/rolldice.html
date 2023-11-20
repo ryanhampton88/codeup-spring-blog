@@ -7,12 +7,22 @@
 <body>
 <h1>Guess A Number</h1>
 
-<button><a href="/roll-dice/1">1</a></button>
-<!--<button name="number"><a href="/roll-dice/2">2</a></button>-->
-<!--<button name="number"><a href="/roll-dice/3">3</a></button>-->
-<!--<button name="number"><a href="/roll-dice/4">4</a></button>-->
-<!--<button name="number"><a href="/roll-dice/5">5</a></button>-->
-<!--<button name="number"><a href="/roll-dice/6">6</a></button>-->
+<form action="/roll-dice" method="post">
+    <label for="number">
+       Enter a number between 1 and 6: <input type="text" name="number" id="number">
+    </label>
+    <label>
+       Enter a number between 1 and 6: <input type="text" name="number2">
+    </label>
+    <input type="submit">
+</form>
+
+<!--<button><a href="/roll-dice/1">1</a> </button>-->
+<!--<button><a href="/roll-dice/2">2</a></button>-->
+<!--<button><a href="/roll-dice/3">3</a></button>-->
+<!--<button><a href="/roll-dice/4">4</a></button>-->
+<!--<button><a href="/roll-dice/5">5</a></button>-->
+<!--<button><a href="/roll-dice/6">6</a></button>-->
 
 </body>
 </html>

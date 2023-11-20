@@ -4,6 +4,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+
 @Controller
 public class RollDiceController {
 
@@ -12,20 +14,26 @@ public class RollDiceController {
         return "rolldice";
     }
 
-    @GetMapping("/roll-dice/{number}")
-    public String getResult(@PathVariable int number, Model model) {
-        int random = (int) (Math.floor(Math.random() * 6) + 1);
+        @PostMapping("/roll-dice")
+        public String getNumbers(@RequestParam(name = "number") int number,
+    @RequestParam(name = "number2") int number2, Model model) {
+        System.out.println(number);
+        System.out.println(number2);
+        model.addAttribute("number", number);
+        model.addAttribute("number2", number2);
 
-        if (random == number) {
-            String correctGuess = "you guessed " + number + " correctly!";
+            int random1 = (int) (Math.floor(Math.random() * 6) + 1);
+            int random2 = (int) (Math.floor(Math.random() * 6) + 1);
+
+            if (number == random1 && number2 == random2) {
+                String correctGuess = "you guessed " + number + " and " + number2 + " correctly!";
             model.addAttribute("message", correctGuess);
-        } else {
-            String incorrectGuess = "You guessed incorrectly. The correct guess is " + random;
-            model.addAttribute("message", incorrectGuess);
-        }
+            } else {
+                String incorrectGuess = "You guessed incorrectly with " + number + " and " +
+                    number2 + ". The correct guess is " + random1 + " and " + random2 + ".";
+                model.addAttribute("message", incorrectGuess);
+            }
         return "result";
-    }
-
-
+        }
 
 }
