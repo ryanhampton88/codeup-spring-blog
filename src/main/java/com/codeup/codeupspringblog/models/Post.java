@@ -17,14 +17,24 @@ public class Post {
     @Column(name = "body", nullable = false)
     private String body;
 
+    @ManyToOne
+    @JoinColumn (name = "user_id")
+    private User user;
+
+//    CREATING CONSTRUCTORS
+    public Post(){}
     public Post(String title, String body) {
         this.title = title;
         this.body = body;
     }
 
-    public Post(){}
+    public Post(User user, String title, String body) {
+        this.user = user;
+        this.title = title;
+        this.body = body;
+    }
 
-    public Post(Long id, String title, String body) {
+    public Post(long id, String title, String body) {
         this.id = id;
         this.title = title;
         this.body = body;
@@ -53,4 +63,8 @@ public class Post {
     public String getBody() {
         return body;
     }
+
+    public void setUser (User user) { this.user = user; }
+
+    public User getUser() { return user; }
 }

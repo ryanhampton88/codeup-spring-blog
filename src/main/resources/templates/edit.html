@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Post</title>
+</head>
+<body>
+
+<h1>Edit post</h1>
+<form action="/posts/edit" method="post">
+    <label for="id">
+        <input hidden="hidden" type = "text" name = "id" id="id" th:value="${selectedPost.getId()}">
+    </label>
+  <label for="title">
+    Title: <input type="text" name="title" id="title" th:value="${selectedPost.getTitle()}">
+  </label>
+  <label for="body">
+    Body: <input type="text" name="body" id="body" th:value="${selectedPost.getBody()}">
+  </label>
+  <input type="submit">
+</form>
+
+</body>
+</html>

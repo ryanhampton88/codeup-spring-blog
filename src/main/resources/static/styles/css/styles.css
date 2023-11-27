@@ -1,0 +1,12 @@
+nav {
+    background-image: linear-gradient(45deg, #3209D6, #741AE8, #B72BF9);
+}
+
+nav a {
+    color: white;
+}
+
+.brand-name {
+    color: #c9a8f1;
+}
+

@@ -6,12 +6,12 @@
 </head>
 <body>
     <h1>Create a new post</h1>
-    <form action="/posts/create" method="post">
+    <form th:action="@{/posts/create}" th:method="post" th:object="${post}">
         <label for="title">
-            Title: <input type="text" name="title" id="title">
+            Title: <input type="text" th:field="*{title}" id="title">
         </label>
         <label for="body">
-           Body: <input type="text" name="body" id="body">
+           Body: <input type="text" th:field="*{body}" id="body">
         </label>
         <input type="submit">
     </form>
