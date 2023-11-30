@@ -1,10 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Create a Post</title>
 </head>
 <body>
+    <div sec:authorize="isAuthenticated()">
+<!--        This content is only shown to authenticated users.-->
+
+        User ID: <span th:text="${#authentication.principal.id}"/>
+        Username: <span th:text="${#authentication.principal.username}"/>
+        Email: <span th:text="${#authentication.principal.email}"/>
+
+    <nav th:insert="partials/navbar :: navbar-signin"></nav>
     <h1>Create a new post</h1>
     <form th:action="@{/posts/create}" th:method="post" th:object="${post}">
         <label for="title">
@@ -15,5 +23,20 @@
         </label>
         <input type="submit">
     </form>
+    </div>
+
+    <div>
+    <nav th:insert="partials/navbar :: navbar-signin"></nav>
+    <h1>Create a new post</h1>
+    <form th:action="@{/posts/create}" th:method="post" th:object="${post}">
+        <label for="title">
+            Title: <input type="text" th:field="*{title}" id="title">
+        </label>
+        <label for="body">
+            Body: <input type="text" th:field="*{body}" id="body">
+        </label>
+        <input type="submit">
+    </form>
+    </div>
 </body>
 </html>
